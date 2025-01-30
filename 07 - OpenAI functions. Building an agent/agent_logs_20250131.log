@@ -1,0 +1,17 @@
+2025-01-31 00:32:20,833 - INFO - Starting the salary query agent
+2025-01-31 00:32:25,962 - INFO - Received user input: what is the median salary
+2025-01-31 00:32:33,087 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-31 00:32:33,103 - INFO - Received initial OpenAI response
+2025-01-31 00:32:33,103 - INFO - Function call detected: execute_sql_query
+2025-01-31 00:32:33,103 - INFO - Executing SQL query: SELECT AVG(total) AS median FROM (SELECT TotalPay AS total FROM Salaries ORDER BY TotalPay LIMIT 2 - (SELECT COUNT(*) FROM Salaries) % 2 OFFSET (SELECT (COUNT(*) - 1) / 2 FROM Salaries))
+2025-01-31 00:32:33,290 - INFO - Query returned 1 results
+2025-01-31 00:32:35,834 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-31 00:32:35,837 - INFO - Received final OpenAI response
+2025-01-31 00:32:47,942 - INFO - Received user input: how many employees in the dataset
+2025-01-31 00:32:51,668 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-31 00:32:51,672 - INFO - Received initial OpenAI response
+2025-01-31 00:32:51,672 - INFO - Function call detected: execute_sql_query
+2025-01-31 00:32:51,672 - INFO - Executing SQL query: SELECT COUNT(*) as TotalEmployees FROM Salaries
+2025-01-31 00:32:51,690 - INFO - Query returned 1 results
+2025-01-31 00:32:53,852 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-31 00:32:53,854 - INFO - Received final OpenAI response
